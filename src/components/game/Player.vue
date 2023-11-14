@@ -2,7 +2,7 @@
 import keeperImg from '~/assets/keeper.png'
 import { usePlayerStore } from '~/store/player'
 
-const { player, movePlayerToLeft } = usePlayerStore()
+const { player, movePlayerToLeft, movePlayerToRight, movePlayerToUp, movePlayerToDown } = usePlayerStore()
 
 const STEP = 32
 
@@ -16,7 +16,15 @@ window.addEventListener('keyup', (e: KeyboardEvent) => {
   switch (e.code) {
     case 'ArrowLeft':
       movePlayerToLeft()
-
+      break
+    case 'ArrowRight':
+      movePlayerToRight()
+      break
+    case 'ArrowUp':
+      movePlayerToUp()
+      break
+    case 'ArrowDown':
+      movePlayerToDown()
       break
 
     default:
