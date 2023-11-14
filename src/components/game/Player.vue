@@ -2,7 +2,7 @@
 import keeperImg from '~/assets/keeper.png'
 import { usePlayerStore } from '~/store/player'
 
-const { player } = usePlayerStore()
+const { player ,movePlayerToLeft} = usePlayerStore()
 
 const STEP = 32
 
@@ -11,6 +11,18 @@ const position = {
   top: `${player.y * STEP}px`,
 
 }
+
+window.addEventListener('keyup',(e:KeyboardEvent) => {
+  switch (e.code) {
+    case 'ArrowLeft':
+      movePlayerToLeft()
+
+      break;
+
+    default:
+      break;
+  }
+})
 </script>
 
 <template>
