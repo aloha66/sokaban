@@ -5,5 +5,6 @@
 <template>
   <div>
     <Map/>
+    <Player/>
   </div>
 </template>
