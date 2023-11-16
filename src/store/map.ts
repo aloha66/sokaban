@@ -6,6 +6,11 @@ export const enum MapTile {
   FLOOR,
 }
 
+interface Position {
+  x: number
+  y: number
+}
+
 export const useMapStore = defineStore('map', () => {
   const map = [
     [1, 1, 1, 1, 1, 1, 1, 1],
@@ -21,7 +26,15 @@ export const useMapStore = defineStore('map', () => {
     map.splice(0, map.length, ...newMap)
   }
 
+  function isWall(position: Position) {
+    // 提供方法，隐藏细节
+    // 脱离过程式代码，提高封装性
+    return map[position.x][position.y] === MapTile.WALL
+  }
+
   return {
+    isWall,
+    setupMap,
     /**
      * 导出去的值是原来的值
      * [1, 1, 1, 1, 1, 1, 1, 1],
@@ -30,5 +43,6 @@ export const useMapStore = defineStore('map', () => {
     [1, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1],
      */
-    map, setupMap }
+    map,
+  }
 })

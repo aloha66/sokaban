@@ -8,10 +8,10 @@ export const usePlayerStore = defineStore('player', () => {
   })
 
   function movePlayerToLeft() {
-    const { map } = useMapStore()
+    const { isWall } = useMapStore()
 
-    const isWall = map[player.x - 1][player.y] === MapTile.WALL
-    if (isWall) return
+    if (isWall({ x: player.x - 1, y: player.y }))
+      return
     player.x--
   }
 
