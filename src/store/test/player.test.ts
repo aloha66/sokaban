@@ -6,6 +6,7 @@ describe('player', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
   })
+  // 独居测试向左移动
   it('should move to left', () => {
     const { player, movePlayerToLeft } = usePlayerStore()
     player.x = 1
