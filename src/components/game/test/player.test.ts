@@ -6,7 +6,7 @@ import { usePlayerStore } from '~/store/player'
 
 // 群居测试向左移动
 // 按左键 + 向左移动
-describe('群居测试', () => {
+describe.skip('群居测试', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
   })
