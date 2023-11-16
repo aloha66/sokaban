@@ -29,7 +29,7 @@ export const useMapStore = defineStore('map', () => {
   function isWall(position: Position) {
     // 提供方法，隐藏细节
     // 脱离过程式代码，提高封装性
-    return map[position.x][position.y] === MapTile.WALL
+    return map[position.y][position.x] === MapTile.WALL
   }
 
   return {
