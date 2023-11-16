@@ -2,35 +2,48 @@
 import keeperImg from '~/assets/keeper.png'
 import { usePlayerStore } from '~/store/player'
 
-const { player, movePlayerToLeft, movePlayerToRight, movePlayerToUp, movePlayerToDown } = usePlayerStore()
+function usePosition() {
+  const { player } = usePlayerStore()
 
-const STEP = 32
+  const STEP = 32
 
-const position = computed(() => ({
-  left: `${player.x * STEP}px`,
-  top: `${player.y * STEP}px`,
+  const position = computed(() => ({
+    left: `${player.x * STEP}px`,
+    top: `${player.y * STEP}px`,
 
-}))
+  }))
 
-window.addEventListener('keyup', (e: KeyboardEvent) => {
-  switch (e.code) {
-    case 'ArrowLeft':
-      movePlayerToLeft()
-      break
-    case 'ArrowRight':
-      movePlayerToRight()
-      break
-    case 'ArrowUp':
-      movePlayerToUp()
-      break
-    case 'ArrowDown':
-      movePlayerToDown()
-      break
+  return { position }
+}
 
-    default:
-      break
-  }
-})
+// 用函数代表代码的意图（封装）
+
+function useMove() {
+  const { movePlayerToLeft, movePlayerToRight, movePlayerToUp, movePlayerToDown } = usePlayerStore()
+  window.addEventListener('keyup', (e: KeyboardEvent) => {
+    switch (e.code) {
+      case 'ArrowLeft':
+        movePlayerToLeft()
+        break
+      case 'ArrowRight':
+        movePlayerToRight()
+        break
+      case 'ArrowUp':
+        movePlayerToUp()
+        break
+      case 'ArrowDown':
+        movePlayerToDown()
+        break
+
+      default:
+        break
+    }
+  })
+}
+
+useMove()
+
+const {position} = usePosition()
 </script>
 
 <template>
