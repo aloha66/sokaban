@@ -6,5 +6,6 @@
   <div>
     <Map/>
     <Player/>
+    <Cargo/>
   </div>
 </template>
