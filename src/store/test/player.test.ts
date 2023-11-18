@@ -146,17 +146,21 @@ describe('player', () => {
       ])
     })
     it('should push a cargo to left',()=> {
+      /**
+       * 由单元测试驱动出前门测试
+       * 设置动态数据
+       */
+      const {addCargo,createCargo} = useCargoStore()
+      const cargo = createCargo({x:5,y:1})
+      addCargo(cargo)
       const {player,movePlayerToLeft} = usePlayerStore()
 
       player.x = 6
       player.y = 1
 
-      const {cargos} = useCargoStore()
-      cargos[0].x = 5
-      cargos[0].x = 1
-
       movePlayerToLeft()
-      expect(cargos[0].x).toBe(4)
+      expect(cargo.x).toBe(4)
+      expect(player.x).toBe(5)
     })
   })
 })
