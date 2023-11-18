@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import cargoImg from '~/assets/cargo.png'
+import type { Cargo } from '~/store/cargo'
 
-const cargo = {
-  x: 2,
-  y: 2,
-}
+const props = defineProps<Cargo>()
 
-
-const { position } = usePosition(cargo)
+const { position } = usePosition(props)
 </script>
 
 <template>
