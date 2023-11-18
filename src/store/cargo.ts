@@ -5,11 +5,20 @@ export interface Cargo {
   y: number
 }
 
-
 export const useCargoStore = defineStore('cargo', () => {
-  const cargos:Cargo[] = [{ x: 2, y: 2 }, { x: 3, y: 3 }]
+  const cargos: Cargo[] = []
+
+  function createCargo({ x, y }: { x: number; y: number }) {
+    return { x, y }
+  }
+
+  function addCargo(cargo: Cargo) {
+    cargos.push(cargo)
+  }
 
   return {
+    addCargo,
+    createCargo,
     cargos,
   }
 })
