@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 import { usePlayerStore } from '../player'
 import { useMapStore } from '../map'
+import { useCargoStore } from '../cargo'
 
 describe('player', () => {
   beforeEach(() => {
@@ -126,6 +127,36 @@ describe('player', () => {
 
       expect(player.x).toBe(1)
       expect(player.y).toBe(3)
+    })
+  })
+
+  describe('push a cargo',()=> {
+    beforeEach(() => {
+      const { setupMap } = useMapStore()
+      /**
+       * 跟墙（其他数据）有所关联
+       * 需要自备测试数据
+       */
+      setupMap([
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 2, 2, 2, 2, 2, 2, 1],
+        [1, 2, 2, 2, 2, 2, 2, 1],
+        [1, 2, 2, 2, 2, 2, 2, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+      ])
+    })
+    it('should push a cargo to left',()=> {
+      const {player,movePlayerToLeft} = usePlayerStore()
+
+      player.x = 6
+      player.y = 1
+
+      const {cargos} = useCargoStore()
+      cargos[0].x = 5
+      cargos[0].x = 1
+
+      movePlayerToLeft()
+      expect(cargos[0].x).toBe(4)
     })
   })
 })
