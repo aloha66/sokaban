@@ -130,7 +130,7 @@ describe('player', () => {
     })
   })
 
-  describe('push a cargo',()=> {
+  describe('push a cargo', () => {
     beforeEach(() => {
       const { setupMap } = useMapStore()
       /**
@@ -146,36 +146,76 @@ describe('player', () => {
       ])
     })
 
-    it('should push a cargo to left',()=> {
+    it('should push a cargo to left', () => {
       /**
        * 由单元测试驱动出前门测试
        * 设置动态数据
        */
-      const {addCargo,createCargo} = useCargoStore()
-      const cargo = createCargo({x:5,y:1})
+      const { addCargo, createCargo } = useCargoStore()
+      const cargo = createCargo({ x: 5, y: 1 })
       addCargo(cargo)
-      const {player,movePlayerToLeft} = usePlayerStore()
+      const { player, movePlayerToLeft } = usePlayerStore()
 
       player.x = 6
       player.y = 1
 
       movePlayerToLeft()
+
       expect(cargo.x).toBe(4)
+      expect(cargo.y).toBe(1)
       expect(player.x).toBe(5)
+      expect(player.y).toBe(1)
     })
 
-    it('should push a cargo to right',()=> {
-      const {addCargo,createCargo} = useCargoStore()
-      const cargo = createCargo({x:2,y:1})
+    it('should push a cargo to right', () => {
+      const { addCargo, createCargo } = useCargoStore()
+      const cargo = createCargo({ x: 2, y: 1 })
       addCargo(cargo)
-      const {player,movePlayerToRight} = usePlayerStore()
+      const { player, movePlayerToRight } = usePlayerStore()
 
       player.x = 1
       player.y = 1
 
       movePlayerToRight()
+
       expect(cargo.x).toBe(3)
+      expect(cargo.y).toBe(1)
       expect(player.x).toBe(2)
+      expect(player.y).toBe(1)
+    })
+
+    it('should push a cargo to up', () => {
+      const { addCargo, createCargo } = useCargoStore()
+      const cargo = createCargo({ x: 1, y: 2 })
+      addCargo(cargo)
+      const { player, movePlayerToUp } = usePlayerStore()
+
+      player.x = 1
+      player.y = 3
+
+      movePlayerToUp()
+
+      expect(cargo.x).toBe(1)
+      expect(cargo.y).toBe(1)
+      expect(player.x).toBe(1)
+      expect(player.y).toBe(2)
+    })
+
+    it('should push a cargo to down', () => {
+      const { addCargo, createCargo } = useCargoStore()
+      const cargo = createCargo({ x: 1, y: 2 })
+      addCargo(cargo)
+      const { player, movePlayerToDown } = usePlayerStore()
+
+      player.x = 1
+      player.y = 1
+
+      movePlayerToDown()
+
+      expect(cargo.x).toBe(1)
+      expect(cargo.y).toBe(3)
+      expect(player.x).toBe(1)
+      expect(player.y).toBe(2)
     })
   })
 })

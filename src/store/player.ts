@@ -34,15 +34,11 @@ export const usePlayerStore = defineStore('player', () => {
   }
 
   function movePlayerToUp() {
-    if (isWall({ x: player.x, y: player.y - 1 }))
-      return
-    player.y--
+    _move(0,-1)
   }
 
   function movePlayerToDown() {
-    if (isWall({ x: player.x, y: player.y + 1 }))
-      return
-    player.y++
+    _move(0,1)
   }
 
   return {
