@@ -7,7 +7,7 @@ export interface Cargo {
 }
 
 export const useCargoStore = defineStore('cargo', () => {
-  const cargos: Cargo[] = []
+  const cargos: Cargo[] = reactive([])
 
   function createCargo({ x, y }: { x: number; y: number }) {
     return { x, y }
