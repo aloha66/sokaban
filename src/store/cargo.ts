@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useMapStore } from './map'
 import type { Position } from '~/composables/usePosition'
 
 export interface Cargo {
@@ -21,7 +22,18 @@ export const useCargoStore = defineStore('cargo', () => {
     return cargos.find(cargo => cargo.x === position.x && cargo.y === position.y)
   }
 
+  function moveCargo(cargo: Cargo, dx: number, dy: number) {
+    const { isWall } = useMapStore()
+
+    if (isWall({ x: cargo.x + dx, y: cargo.y + dy }))
+      return false
+    cargo.x += dx
+    cargo.y += dy
+    return true
+  }
+
   return {
+    moveCargo,
     findCargo,
     addCargo,
     createCargo,

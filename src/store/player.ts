@@ -14,24 +14,13 @@ export const usePlayerStore = defineStore('player', () => {
     const nextPosition = { x: player.x + dx, y: player.y + dy }
     if (isWall(nextPosition))
       return
-    const { findCargo } = useCargoStore()
+    const { findCargo, moveCargo } = useCargoStore()
     const cargo = findCargo(nextPosition)
-
-    /**
-     * player的移动和cargo的移动是耦合在一起
-     */
     if (cargo) {
-      /**
-       * 针对cargo的移动判定
-       * 目前是放在了player.ts里面了
-       * 应该放回cargo，暴露一个方法，隐藏细节
-       * moveCargo
-       */
-      
-      if (isWall({ x: cargo.x + dx, y: cargo.y + dy }))
+      // 暴露行为
+      const isCargoMove = moveCargo(cargo, dx, dy)
+      if (!isCargoMove)
         return
-      cargo.x += dx
-      cargo.y += dy
     }
 
     player.x += dx
