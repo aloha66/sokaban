@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import type { Position } from '~/composables/usePosition'
 
 export interface Cargo {
   x: number
@@ -16,7 +17,12 @@ export const useCargoStore = defineStore('cargo', () => {
     cargos.push(cargo)
   }
 
+  function findCargo(position: Position) {
+    return cargos.find(cargo => cargo.x === position.x && cargo.y === position.y)
+  }
+
   return {
+    findCargo,
     addCargo,
     createCargo,
     cargos,
