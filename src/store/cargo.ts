@@ -24,9 +24,14 @@ export const useCargoStore = defineStore('cargo', () => {
 
   function moveCargo(cargo: Cargo, dx: number, dy: number) {
     const { isWall } = useMapStore()
+    const position = { x: cargo.x + dx, y: cargo.y + dy }
 
-    if (isWall({ x: cargo.x + dx, y: cargo.y + dy }))
+    if (isWall(position))
       return false
+
+    if (findCargo(position))
+      return
+
     cargo.x += dx
     cargo.y += dy
     return true
