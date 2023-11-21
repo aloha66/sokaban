@@ -8,7 +8,7 @@ export interface Target {
 }
 
 export const useTargetStore = defineStore('target', () => {
-  const targets: Target[] = reactive([])
+  const targets = reactive<Target[]>([])
 
   function createTarget({ x, y }: { x: number; y: number }) {
     return { x, y }

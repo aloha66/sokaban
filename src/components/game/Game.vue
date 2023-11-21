@@ -9,9 +9,6 @@ addCargo(createCargo({ x: 3, y: 3 }))
 
 const { targets, addTarget, createTarget } = useTargetStore()
 
-addCargo(createCargo({ x: 2, y: 2 }))
-addCargo(createCargo({ x: 3, y: 3 }))
-
 addTarget(createTarget({ x: 4, y: 3 }))
 addTarget(createTarget({ x: 5, y: 3 }))
 </script>
