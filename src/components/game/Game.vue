@@ -1,35 +1,15 @@
 <script setup lang="ts">
+import { levelGameData } from '~/game/gameData'
 import { useCargoStore } from '~/store/cargo'
 import { useGameStore } from '~/store/game'
-import { useMapStore } from '~/store/map';
-import { usePlayerStore } from '~/store/player'
 import { useTargetStore } from '~/store/target'
 
-const { cargos, addCargo, createCargo } = useCargoStore()
+const { game, setupGame } = useGameStore()
+const { cargos } = useCargoStore()
 
-addCargo(createCargo({ x: 2, y: 2 }))
-addCargo(createCargo({ x: 3, y: 3 }))
+const { targets } = useTargetStore()
 
-const { targets, addTarget, createTarget } = useTargetStore()
-
-addTarget(createTarget({ x: 4, y: 3 }))
-addTarget(createTarget({ x: 6, y: 3 }))
-
-const { game } = useGameStore()
-
-const { player } = usePlayerStore()
-
-player.x = 1
-player.y = 1
-
-const {setupMap} = useMapStore()
-setupMap([
-    [1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1],
-  ])
+setupGame(levelGameData)
 </script>
 
 <template>

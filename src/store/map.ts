@@ -11,7 +11,7 @@ interface Position {
   y: number
 }
 
-type Map = MapTile[][]
+export type Map = MapTile[][]
 
 export const useMapStore = defineStore('map', () => {
   const map = reactive<Map>([])
