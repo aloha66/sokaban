@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import targetImg from '~/assets/target.png'
-import type { Cargo } from '~/store/cargo'
+import type { Target } from '~/store/target'
 
-const props = defineProps<Cargo>()
+const props = defineProps<Target>()
 
 const { position } = usePosition(props)
 </script>
