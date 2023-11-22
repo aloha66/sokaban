@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useCargoStore } from '~/store/cargo'
+import { useGameStore } from '~/store/game';
 import { useTargetStore } from '~/store/target'
 
 const { cargos, addCargo, createCargo } = useCargoStore()
@@ -10,7 +11,10 @@ addCargo(createCargo({ x: 3, y: 3 }))
 const { targets, addTarget, createTarget } = useTargetStore()
 
 addTarget(createTarget({ x: 4, y: 3 }))
-addTarget(createTarget({ x: 5, y: 3 }))
+addTarget(createTarget({ x: 6, y: 3 }))
+
+
+const {game} = useGameStore()
 </script>
 
 <template>
@@ -26,5 +30,9 @@ addTarget(createTarget({ x: 5, y: 3 }))
     </template>
 
     <Player />
+
+    <div v-if="game.isGameCompleted">
+      <button bg-red>下一关</button>
+    </div>
   </div>
 </template>

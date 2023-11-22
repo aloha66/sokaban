@@ -1,9 +1,11 @@
 // 用函数代表代码的意图（封装）
 
+import { useGameStore } from '~/store/game'
 import { usePlayerStore } from '~/store/player'
 
 export function useMove() {
   const { movePlayerToLeft, movePlayerToRight, movePlayerToUp, movePlayerToDown } = usePlayerStore()
+  const {detectionGameCompleted} = useGameStore()
 
   function handleKeyup(e: KeyboardEvent) {
     switch (e.code) {
@@ -23,6 +25,8 @@ export function useMove() {
       default:
         break
     }
+    
+    detectionGameCompleted()
   }
 
   onMounted(() => {

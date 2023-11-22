@@ -25,6 +25,9 @@ export const usePlayerStore = defineStore('player', () => {
 
     player.x += dx
     player.y += dy
+    // 可在这里检测是否游戏进入下一关
+    // 但这样会导致player和game耦合
+    // detectionGameCompleted
   }
 
   function movePlayerToLeft() {
