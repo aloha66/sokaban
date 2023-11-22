@@ -2,10 +2,15 @@ import { defineStore } from 'pinia'
 import { useMapStore } from './map'
 import { useCargoStore } from './cargo'
 
+export interface Player {
+  x: number
+  y: number
+}
+
 export const usePlayerStore = defineStore('player', () => {
   const { isWall } = useMapStore()
 
-  const player = reactive({
+  const player = reactive<Player>({
     x: 1,
     y: 1,
   })

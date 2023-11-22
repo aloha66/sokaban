@@ -11,16 +11,12 @@ interface Position {
   y: number
 }
 
-export const useMapStore = defineStore('map', () => {
-  const map = [
-    [1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1],
-  ]
+type Map = MapTile[][]
 
-  function setupMap(newMap: MapTile[][]) {
+export const useMapStore = defineStore('map', () => {
+  const map = reactive<Map>([])
+
+  function setupMap(newMap: Map) {
     // 修改引用 map = newMap
     // toEqual值没有发生改变
     map.splice(0, map.length, ...newMap)
