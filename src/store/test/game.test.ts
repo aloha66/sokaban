@@ -18,13 +18,26 @@ describe('game', () => {
     // 通过调用方法（前门测试）达到目的（改造成本最少）
 
     moveCargo(cargo, 1, 0)
-    
+
     const { detectionGameCompleted, game } = useGameStore()
     detectionGameCompleted()
     expect(game.isGameCompleted).toBe(true)
   })
 
   it('should not game completed', () => {
+    const { addCargo, createCargo, moveCargo } = useCargoStore()
+    const cargo = createCargo({ x: 2, y: 1 })
+    addCargo(cargo)
 
+    const { addTarget, createTarget } = useTargetStore()
+    addTarget(createTarget({ x: 3, y: 1 }))
+    // 通过调用方法（前门测试）达到目的（改造成本最少）
+
+    moveCargo(cargo, 1, 0)
+    moveCargo(cargo, 1, 0)
+
+    const { detectionGameCompleted, game } = useGameStore()
+    detectionGameCompleted()
+    expect(game.isGameCompleted).toBe(false)
   })
 })
