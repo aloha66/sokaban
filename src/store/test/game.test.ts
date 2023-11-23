@@ -72,7 +72,9 @@ describe('game', () => {
       cargos: [{ x: 2, y: 2 }, { x: 3, y: 3 }],
       targets: [{ x: 4, y: 3 }, { x: 6, y: 3 }],
     }
-    setupGame(levelGameData)
+
+    const gameData = [levelGameData]
+    setupGame(gameData)
 
     const { player } = usePlayerStore()
     const { map } = useMapStore()

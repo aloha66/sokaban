@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { levelGameData } from '~/game/gameData'
+import { gameData } from '~/game/gameData'
 import { useCargoStore } from '~/store/cargo'
 import { useGameStore } from '~/store/game'
 import { useTargetStore } from '~/store/target'
@@ -9,7 +9,7 @@ const { cargos } = useCargoStore()
 
 const { targets } = useTargetStore()
 
-setupGame(levelGameData)
+setupGame(gameData)
 </script>
 
 <template>
