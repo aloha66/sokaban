@@ -88,8 +88,8 @@ describe('game', () => {
     expect(targets.length).toBe(levelGameData.targets.length)
   })
 
-  it('should next to level',() => {
-    const { setupGame,toNextLevel ,game} = useGameStore()
+  it('should next to level', () => {
+    const { setupGame, toNextLevel, game } = useGameStore()
 
     const levelGameData = {
       player: { x: 1, y: 1 },
@@ -117,7 +117,7 @@ describe('game', () => {
       targets: [{ x: 4, y: 3 }, { x: 6, y: 3 }],
     }
 
-    const gameData = [levelGameData,secondGameData]
+    const gameData = [levelGameData, secondGameData]
     setupGame(gameData)
 
     toNextLevel()

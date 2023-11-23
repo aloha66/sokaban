@@ -29,8 +29,10 @@ export const useGameStore = defineStore('game', () => {
     const levelGameData = gameData[game.level - 1]
     const { player } = usePlayerStore()
     const { setupMap } = useMapStore()
-    const { createCargo, addCargo } = useCargoStore()
+    const { createCargo, addCargo, clearAllCargo } = useCargoStore()
     const { createTarget, addTarget } = useTargetStore()
+
+    clearAllCargo()
 
     player.x = levelGameData.player.x
     player.y = levelGameData.player.y
@@ -48,8 +50,11 @@ export const useGameStore = defineStore('game', () => {
     const levelGameData = _gameData[game.level - 1]
     const { player } = usePlayerStore()
     const { setupMap } = useMapStore()
-    const { createCargo, addCargo } = useCargoStore()
-    const { createTarget, addTarget } = useTargetStore()
+    const { createCargo, addCargo, clearAllCargo } = useCargoStore()
+    const { createTarget, addTarget, clearAllTarget } = useTargetStore()
+
+    clearAllCargo()
+    clearAllTarget()
 
     player.x = levelGameData.player.x
     player.y = levelGameData.player.y
