@@ -21,7 +21,7 @@ describe('cargo', () => {
       [1, 1, 1, 1, 1, 1, 1, 1],
     ])
   })
-  
+
   it('should add a cargo', () => {
     const { addCargo, createCargo, cargos } = useCargoStore()
     cargos.length = 0
@@ -56,5 +56,18 @@ describe('cargo', () => {
       moveCargo(cargo, 1, 0)
       expect(cargo.onTarget).toBe(false)
     })
+  })
+
+  it('should clear all cargo', () => {
+    const { addCargo, createCargo, cargos, clearAllCargo } = useCargoStore()
+    cargos.length = 0
+    const cargo = createCargo({ x: 5, y: 1 })
+    addCargo(cargo)
+
+    addCargo(createCargo({ x: 6, y: 1 }))
+
+    clearAllCargo()
+
+    expect(cargos.length).toBe(0)
   })
 })
