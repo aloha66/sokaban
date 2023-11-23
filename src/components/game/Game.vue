@@ -4,7 +4,7 @@ import { useCargoStore } from '~/store/cargo'
 import { useGameStore } from '~/store/game'
 import { useTargetStore } from '~/store/target'
 
-const { game, setupGame } = useGameStore()
+const { game, setupGame,toNextLevel } = useGameStore()
 const { cargos } = useCargoStore()
 
 const { targets } = useTargetStore()
@@ -27,7 +27,7 @@ setupGame(gameData)
     <Player />
 
     <div v-if="game.isGameCompleted">
-      <button bg-red>
+      <button bg-red @click="toNextLevel">
         下一关
       </button>
     </div>
