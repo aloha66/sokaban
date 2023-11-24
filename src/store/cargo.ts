@@ -3,7 +3,9 @@ import { useMapStore } from './map'
 import { useTargetStore } from './target'
 import type { Position } from '~/composables/usePosition'
 
+let id = 1
 export interface Cargo {
+  id: number
   x: number
   y: number
   onTarget: boolean
@@ -13,7 +15,7 @@ export const useCargoStore = defineStore('cargo', () => {
   const cargos: Cargo[] = reactive([])
 
   function createCargo({ x, y }: { x: number; y: number }) {
-    return { x, y, onTarget: false }
+    return { x, y, onTarget: false, id: id++ }
   }
 
   function addCargo(cargo: Cargo) {
