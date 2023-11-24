@@ -116,4 +116,16 @@ describe('game', () => {
     expectSetupLevelGameData(secondGameData)
     expect(game.level).toBe(2)
   })
+
+  it('should reset game compeletd when to next level', () => {
+    const { setupGame, toNextLevel, game } = useGameStore()
+    game.isGameCompleted = true
+
+    setupGame(gameData)
+
+    toNextLevel()
+
+    expectSetupLevelGameData(secondGameData)
+    expect(game.isGameCompleted).toBe(false)
+  })
 })

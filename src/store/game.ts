@@ -51,7 +51,7 @@ export const useGameStore = defineStore('game', () => {
 
   function toNextLevel() {
     game.level++
-
+    game.isGameCompleted = false
     setupLevel()
   }
 
