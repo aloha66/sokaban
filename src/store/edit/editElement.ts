@@ -25,6 +25,10 @@ export const floorEditElement: EditElement = {
   },
 }
 
+/**
+ * 开闭原则
+ * 对扩展开放，对修改关闭
+ */
 export const useEditElementStore = defineStore('edit-element', () => {
   let currentSelectedEditElement: EditElement
 
