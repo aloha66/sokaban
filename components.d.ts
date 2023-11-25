@@ -8,9 +8,9 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Cargo: typeof import('./src/components/game/Cargo.vue')['default']
-    copy: typeof import('./src/components/game/Cargo copy.vue')['default']
     Game: typeof import('./src/components/game/Game.vue')['default']
     Map: typeof import('./src/components/game/Map.vue')['default']
+    MapBlock: typeof import('./src/components/edit/MapBlock.vue')['default']
     MapEdit: typeof import('./src/components/edit/MapEdit.vue')['default']
     Player: typeof import('./src/components/game/Player.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

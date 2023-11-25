@@ -10,8 +10,8 @@ import UnoCSS from 'unocss/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
 
 export default defineConfig({
-  test:{
-    environment:"happy-dom"
+  test: {
+    environment: 'happy-dom',
   },
   resolve: {
     alias: {
@@ -45,6 +45,7 @@ export default defineConfig({
       dts: true,
       dirs: [
         './src/composables',
+        './src/store',
       ],
       vueTemplate: true,
     }),
