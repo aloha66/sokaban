@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import wallImg from '~/assets/wall.png'
 import floorImg from '~/assets/floor.png'
-import { useMapEditStore } from '~/store/edit/mapEdit'
+import type { EditElement } from '~/store/edit/editElement'
+import { floorEditElement, useEditElementStore, wallEditElement } from '~/store/edit/editElement'
 
-const { setCurrentSelectedEditElement } = useMapEditStore()
+const { setCurrentSelectedEditElement } = useEditElementStore()
 
-function handleClick(name: 'wall' | 'floor') {
-  setCurrentSelectedEditElement({ name })
+function handleClick(editElement: EditElement) {
+  setCurrentSelectedEditElement(editElement)
 }
 </script>
 
@@ -15,10 +16,10 @@ function handleClick(name: 'wall' | 'floor') {
     <h3>元素选择区</h3>
     <div m-2 flex space-x-2>
       <h4>地图</h4>
-      <div @click="handleClick('wall')">
+      <div @click="handleClick(wallEditElement)">
         <img :src="wallImg">
       </div>
-      <div @click="handleClick('floor')">
+      <div @click="handleClick(floorEditElement)">
         <img :src="floorImg">
       </div>
     </div>
