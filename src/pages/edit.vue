@@ -13,7 +13,7 @@ defineOptions({
       <div>数据展示区</div>
     </div>
     <div>
-      元素选择区
+      <EditElementView/>
     </div>
   </div>
 </template>

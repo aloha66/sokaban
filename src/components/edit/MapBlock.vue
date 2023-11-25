@@ -12,10 +12,10 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const { map } = useMapEditStore()
+const { map,getCurrentSelectedEditElement } = useMapEditStore()
 
 function handleClick() {
-  map[props.y][props.x] = MapTile.WALL
+  map[props.y][props.x] = getCurrentSelectedEditElement().name === 'wall' ? MapTile.WALL : MapTile.FLOOR
 }
 </script>
 
