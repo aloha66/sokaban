@@ -11,6 +11,7 @@ declare module 'vue' {
     copy: typeof import('./src/components/game/Cargo copy.vue')['default']
     Game: typeof import('./src/components/game/Game.vue')['default']
     Map: typeof import('./src/components/game/Map.vue')['default']
+    MapEdit: typeof import('./src/components/edit/MapEdit.vue')['default']
     Player: typeof import('./src/components/game/Player.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
