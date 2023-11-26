@@ -4,20 +4,15 @@ import { defineStore } from 'pinia'
 type MapEdit = MapTile[][]
 
 export const useMapEditStore = defineStore('map-edit', () => {
-  const map = reactive<MapEdit>([
-    // [2, 2, 2, 2, 2, 2],
-    // [2, 2, 2, 2, 2, 2],
-    // [2, 2, 2, 2, 2, 2],
-    // [2, 2, 2, 2, 2, 2],
-  ])
+  const map = reactive<MapEdit>([])
 
-  const row = 8
-  const col = 8
+  const row = ref(8)
+  const col = ref(8)
 
   function initMap() {
-    for (let i = 0; i < row; i++) {
+    for (let i = 0; i < row.value; i++) {
       const cells = []
-      for (let j = 0; j < col; j++)
+      for (let j = 0; j < col.value; j++)
         cells.push(MapTile.FLOOR)
 
       map.push(cells)
@@ -25,6 +20,8 @@ export const useMapEditStore = defineStore('map-edit', () => {
   }
 
   return {
+    row,
+    col,
     initMap,
     map,
   }
