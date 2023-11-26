@@ -6,6 +6,8 @@ import { floorEditElement, useEditElementStore, wallEditElement } from '../editE
 describe('editElement', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
+    const { initMap } = useMapEditStore()
+    initMap()
   })
   it('should change to wall when current selected element is wall', () => {
     const { map } = useMapEditStore()
