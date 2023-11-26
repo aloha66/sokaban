@@ -29,14 +29,12 @@ export const useMapEditStore = defineStore('map-edit', () => {
     // row 新
     // map.length 旧
     const oldRow = map.length
-    if (row.value > oldRow)
-    // 添加伪实现
-      map.push([2, 2])
-      // return [
-      //   [2, 2],
-      //   [2, 2],
-      //   [2, 2],
-      // ]
+    const col = map[0].length
+    if (row.value > oldRow) {
+      const diff = row.value - oldRow
+      for (let i = 0; i < diff; i++)
+        map.push(Array.from({length: col}).fill(MapTile.FLOOR))
+    }
   }
 
   /**
