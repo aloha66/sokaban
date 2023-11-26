@@ -17,4 +17,30 @@ describe('mapEdit', () => {
     expect(map.length).toBe(row)
     expect(map[0].length).toBe(col)
   })
+
+  describe('row', () => {
+    it('should add a line when increase', () => {
+      const { updateMapRow, setRow, initMap, map } = useMapEditStore()
+      initMap(2, 2)
+      setRow(3)
+      updateMapRow()
+
+      expect(map).toMatchInlineSnapshot(`
+        [
+          [
+            2,
+            2,
+          ],
+          [
+            2,
+            2,
+          ],
+          [
+            2,
+            2,
+          ],
+        ]
+      `)
+    })
+  })
 })
