@@ -42,5 +42,27 @@ describe('mapEdit', () => {
         ]
       `)
     })
+
+    it('should add a line when decrease', () => {
+      const { updateMapRow, setRow, initMap, map } = useMapEditStore()
+      initMap(3, 3)
+      setRow(2)
+      updateMapRow()
+
+      expect(map).toMatchInlineSnapshot(`
+        [
+          [
+            2,
+            2,
+            2,
+          ],
+          [
+            2,
+            2,
+            2,
+          ],
+        ]
+      `)
+    })
   })
 })

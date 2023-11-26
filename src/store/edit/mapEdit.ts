@@ -25,6 +25,8 @@ export const useMapEditStore = defineStore('map-edit', () => {
   }
 
   function updateMapRow() {
+    if (!row.value)
+      return
     // 新的比旧的多 是新增
     // row 新
     // map.length 旧
@@ -33,7 +35,12 @@ export const useMapEditStore = defineStore('map-edit', () => {
     if (row.value > oldRow) {
       const diff = row.value - oldRow
       for (let i = 0; i < diff; i++)
-        map.push(Array.from({length: col}).fill(MapTile.FLOOR))
+        map.push(Array.from({ length: col }).fill(MapTile.FLOOR))
+    }
+    else if (row.value < oldRow) {
+      // 少于是减少
+      const diff = oldRow - row.value
+      map.splice(row.value, diff)
     }
   }
 
