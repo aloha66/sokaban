@@ -65,4 +65,29 @@ describe('mapEdit', () => {
       `)
     })
   })
+
+  describe('col', () => {
+    it('should add a line when increase', () => {
+      const { initMap, map, updateMapCol, setCol } = useMapEditStore()
+
+      initMap(2, 2)
+      setCol(3)
+      updateMapCol()
+
+      expect(map).toMatchInlineSnapshot(`
+        [
+          [
+            2,
+            2,
+            2,
+          ],
+          [
+            2,
+            2,
+            2,
+          ],
+        ]
+      `)
+    })
+  })
 })

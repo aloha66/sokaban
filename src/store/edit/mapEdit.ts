@@ -44,6 +44,20 @@ export const useMapEditStore = defineStore('map-edit', () => {
     }
   }
 
+  function updateMapCol() {
+    if (!col.value)
+      return
+    const oldCol = map[0].length
+    // 新增
+    if (col.value > oldCol) {
+      const diff = col.value - oldCol
+      for (let i = 0; i < map.length; i++)
+        map[i].push(...Array.from({length: diff}).fill(MapTile.FLOOR))
+        // for (let j = 0; j < diff; j++)
+        //   map[i].push(MapTile.FLOOR)
+    }
+  }
+
   /**
    * pinia在导出之后会自动解包value
    * 则外部拿到的row是number类型，而不是Ref<number>
@@ -55,7 +69,13 @@ export const useMapEditStore = defineStore('map-edit', () => {
     row.value = _row
   }
 
+  function setCol(_col: number) {
+    col.value = _col
+  }
+
   return {
+    updateMapCol,
+    setCol,
     setRow,
     updateMapRow,
     row,
