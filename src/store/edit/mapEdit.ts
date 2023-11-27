@@ -52,9 +52,14 @@ export const useMapEditStore = defineStore('map-edit', () => {
     if (col.value > oldCol) {
       const diff = col.value - oldCol
       for (let i = 0; i < map.length; i++)
-        map[i].push(...Array.from({length: diff}).fill(MapTile.FLOOR))
+        map[i].push(...Array.from({ length: diff }).fill(MapTile.FLOOR))
         // for (let j = 0; j < diff; j++)
         //   map[i].push(MapTile.FLOOR)
+    }
+    else if (col.value < oldCol) {
+      const diff = oldCol - col.value
+      for (let i = 0; i < map.length; i++)
+        map[i].splice(col.value, diff)
     }
   }
 

@@ -43,7 +43,7 @@ describe('mapEdit', () => {
       `)
     })
 
-    it('should add a line when decrease', () => {
+    it('should desc a line when decrease', () => {
       const { updateMapRow, setRow, initMap, map } = useMapEditStore()
       initMap(3, 3)
       setRow(2)
@@ -83,6 +83,31 @@ describe('mapEdit', () => {
           ],
           [
             2,
+            2,
+            2,
+          ],
+        ]
+      `)
+    })
+
+    it('should desc a line when decrease', () => {
+      const { initMap, map, updateMapCol, setCol } = useMapEditStore()
+
+      initMap(3, 3)
+      setCol(2)
+      updateMapCol()
+
+      expect(map).toMatchInlineSnapshot(`
+        [
+          [
+            2,
+            2,
+          ],
+          [
+            2,
+            2,
+          ],
+          [
             2,
             2,
           ],
