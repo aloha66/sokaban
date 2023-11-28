@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { floorEditElement, wallEditElement } from '~/store/edit/editElement'
+import { floorEditElement, playerEditElement, wallEditElement } from '~/store/edit/editElement'
 import { useMapEditStore } from '~/store/edit/mapEdit'
 
 const { initMap, updateMapRow, updateMapCol } = useMapEditStore()
@@ -25,9 +25,13 @@ watchEffect(() => {
       <div>col: <input v-model="col" border border-blue-50></div>
     </div>
     <div m-2 flex space-x-2>
-      <h4>地图</h4>
+      <h4>地图：</h4>
       <EditElement :edit-element="wallEditElement" />
       <EditElement :edit-element="floorEditElement" />
+    </div>
+    <div m-2 flex space-x-2>
+      <h4>玩家：</h4>
+      <EditElement :edit-element="playerEditElement" />
     </div>
   </div>
 </template>

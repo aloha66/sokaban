@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
 import { useMapEditStore } from './mapEdit'
+import { useEditPlayerStore } from './editPlayer'
 import type { Position } from '~/composables/usePosition'
 import wallImg from '~/assets/wall.png'
 import floorImg from '~/assets/floor.png'
+import keeperImg from '~/assets/keeper.png'
 
 export interface EditElement {
   img: string
@@ -22,6 +24,15 @@ export const floorEditElement: EditElement = {
   execute: (position) => {
     const { map } = useMapEditStore()
     map[position.y][position.x] = MapTile.FLOOR
+  },
+}
+
+export const playerEditElement: EditElement = {
+  img: keeperImg,
+  execute: (position) => {
+    const { player } = useEditPlayerStore()
+    player.x = position.x
+    player.y = position.y
   },
 }
 

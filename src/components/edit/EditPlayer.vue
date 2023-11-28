@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import keeperImg from '~/assets/keeper.png'
+import { useEditPlayerStore } from '~/store/edit/editPlayer'
 
-const { position } = usePosition({ x: 1, y: 1 }, STEP_EDIT)
+const { player } = useEditPlayerStore()
+
+const { position } = usePosition(player, STEP_EDIT)
 </script>
 
 <template>
