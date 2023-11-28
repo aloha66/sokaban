@@ -7,6 +7,8 @@ export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const MapTile: typeof import('./src/store/map')['MapTile']
+  const STEP_EDIT: typeof import('./src/composables/usePosition')['STEP_EDIT']
+  const STEP_GAME: typeof import('./src/composables/usePosition')['STEP_GAME']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const computed: typeof import('vue')['computed']
@@ -304,6 +306,8 @@ declare module 'vue' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly MapTile: UnwrapRef<typeof import('./src/store/map')['MapTile']>
+    readonly STEP_EDIT: UnwrapRef<typeof import('./src/composables/usePosition')['STEP_EDIT']>
+    readonly STEP_GAME: UnwrapRef<typeof import('./src/composables/usePosition')['STEP_GAME']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
@@ -595,6 +599,8 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly MapTile: UnwrapRef<typeof import('./src/store/map')['MapTile']>
+    readonly STEP_EDIT: UnwrapRef<typeof import('./src/composables/usePosition')['STEP_EDIT']>
+    readonly STEP_GAME: UnwrapRef<typeof import('./src/composables/usePosition')['STEP_GAME']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>

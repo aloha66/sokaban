@@ -3,12 +3,13 @@ export interface Position {
   y: number
 }
 
-export function usePosition(pos: Position) {
-  const STEP = 32
+export const STEP_GAME = 32
+export const STEP_EDIT = 34
 
+export function usePosition(pos: Position, step = STEP_GAME) {
   const position = computed(() => ({
-    left: `${pos.x * STEP}px`,
-    top: `${pos.y * STEP}px`,
+    left: `${pos.x * step}px`,
+    top: `${pos.y * step}px`,
 
   }))
 

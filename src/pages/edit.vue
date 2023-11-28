@@ -9,6 +9,7 @@ defineOptions({
     <div flex>
       <div w-2xl bg-pink>
         <MapEdit />
+        <EditPlayer/>
       </div>
       <div>数据展示区</div>
     </div>

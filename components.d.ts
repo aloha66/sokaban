@@ -10,6 +10,7 @@ declare module 'vue' {
     Cargo: typeof import('./src/components/game/Cargo.vue')['default']
     EditElement: typeof import('./src/components/edit/EditElement.vue')['default']
     EditElementView: typeof import('./src/components/edit/EditElementView.vue')['default']
+    EditPlayer: typeof import('./src/components/edit/EditPlayer.vue')['default']
     Game: typeof import('./src/components/game/Game.vue')['default']
     Map: typeof import('./src/components/game/Map.vue')['default']
     MapBlock: typeof import('./src/components/edit/MapBlock.vue')['default']
