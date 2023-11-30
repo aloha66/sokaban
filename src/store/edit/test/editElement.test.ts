@@ -17,7 +17,7 @@ describe('editElement', () => {
     // 多态
     setCurrentSelectedEditElement(wallEditElement)
 
-    getCurrentSelectedEditElement().execute({ x: 1, y: 1 })
+    getCurrentSelectedEditElement()?.execute({ x: 1, y: 1 })
 
     expect(map[1][1]).toBe(MapTile.WALL)
   })
@@ -29,7 +29,7 @@ describe('editElement', () => {
     // 多态
     setCurrentSelectedEditElement(floorEditElement)
 
-    getCurrentSelectedEditElement().execute({ x: 1, y: 1 })
+    getCurrentSelectedEditElement()?.execute({ x: 1, y: 1 })
 
     expect(map[1][1]).toBe(MapTile.FLOOR)
   })
@@ -43,7 +43,7 @@ describe('editElement', () => {
     setCurrentSelectedEditElement(playerEditElement)
     const position = { x: 1, y: 1 }
 
-    getCurrentSelectedEditElement().execute(position)
+    getCurrentSelectedEditElement()?.execute(position)
 
     expect(player.x).toBe(position.x)
     expect(player.y).toBe(position.y)
