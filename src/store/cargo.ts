@@ -2,8 +2,9 @@ import { defineStore } from 'pinia'
 import { useMapStore } from './map'
 import { useTargetStore } from './target'
 import type { Position } from '~/composables/usePosition'
+import { generateId } from '~/util/id'
 
-let id = 1
+
 export interface Cargo {
   id: number
   x: number
@@ -15,7 +16,7 @@ export const useCargoStore = defineStore('cargo', () => {
   const cargos: Cargo[] = reactive([])
 
   function createCargo({ x, y }: { x: number; y: number }) {
-    return { x, y, onTarget: false, id: id++ }
+    return { x, y, onTarget: false, id: generateId() }
   }
 
   function addCargo(cargo: Cargo) {

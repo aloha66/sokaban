@@ -1,10 +1,12 @@
 import { defineStore } from 'pinia'
 import { useMapEditStore } from './mapEdit'
 import { useEditPlayerStore } from './editPlayer'
+import { useEditCargoStore } from './editCargo'
 import type { Position } from '~/composables/usePosition'
 import wallImg from '~/assets/wall.png'
 import floorImg from '~/assets/floor.png'
 import keeperImg from '~/assets/keeper.png'
+import cargoImg from '~/assets/cargo.png'
 
 export interface EditElement {
   name: string
@@ -37,6 +39,15 @@ export const playerEditElement: EditElement = {
     const { player } = useEditPlayerStore()
     player.x = position.x
     player.y = position.y
+  },
+}
+
+export const cargoEditElement: EditElement = {
+  name: '箱子',
+  img: cargoImg,
+  execute: (position) => {
+    const { createCargo, addCargo } = useEditCargoStore()
+    addCargo(createCargo(position))
   },
 }
 
