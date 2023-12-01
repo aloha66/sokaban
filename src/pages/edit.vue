@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends any, O extends any">
 import { useEditCargoStore } from '~/store/edit/editCargo'
-import { useEditTargetStore } from '~/store/edit/editTarget';
+import { useEditTargetStore } from '~/store/edit/editTarget'
 
 defineOptions({
   name: 'Edit',
@@ -23,7 +23,9 @@ const { targets } = useEditTargetStore()
           <EditTarget v-bind="target" />
         </template>
       </div>
-      <div>数据展示区</div>
+      <div>
+        <DataDisplayer />
+      </div>
     </div>
     <div>
       <EditElementView />

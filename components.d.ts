@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Cargo: typeof import('./src/components/game/Cargo.vue')['default']
+    DataDisplayer: typeof import('./src/components/edit/DataDisplayer.vue')['default']
     EditCargo: typeof import('./src/components/edit/EditCargo.vue')['default']
     EditElement: typeof import('./src/components/edit/EditElement.vue')['default']
     EditElementView: typeof import('./src/components/edit/EditElementView.vue')['default']
