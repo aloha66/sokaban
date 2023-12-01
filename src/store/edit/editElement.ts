@@ -2,11 +2,13 @@ import { defineStore } from 'pinia'
 import { useMapEditStore } from './mapEdit'
 import { useEditPlayerStore } from './editPlayer'
 import { useEditCargoStore } from './editCargo'
+import { useEditTargetStore } from './editTarget'
 import type { Position } from '~/composables/usePosition'
 import wallImg from '~/assets/wall.png'
 import floorImg from '~/assets/floor.png'
 import keeperImg from '~/assets/keeper.png'
 import cargoImg from '~/assets/cargo.png'
+import targetImg from '~/assets/target.png'
 
 export interface EditElement {
   name: string
@@ -48,6 +50,15 @@ export const cargoEditElement: EditElement = {
   execute: (position) => {
     const { createCargo, addCargo } = useEditCargoStore()
     addCargo(createCargo(position))
+  },
+}
+
+export const targetEditElement: EditElement = {
+  name: '放置点',
+  img: targetImg,
+  execute(position) {
+    const { createTarget, addTarget } = useEditTargetStore()
+    addTarget(createTarget(position))
   },
 }
 

@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia'
-import { useMapStore } from './map'
 import type { Position } from '~/composables/usePosition'
+import { generateId } from '~/util/id'
 
-let id = 1
 export interface Target {
   id: number
   x: number
@@ -13,7 +12,7 @@ export const useTargetStore = defineStore('target', () => {
   const targets = reactive<Target[]>([])
 
   function createTarget({ x, y }: { x: number; y: number }) {
-    return { x, y, id: id++ }
+    return { x, y, id: generateId() }
   }
 
   function addTarget(target: Target) {

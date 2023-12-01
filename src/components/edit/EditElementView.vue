@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cargoEditElement, floorEditElement, playerEditElement, useEditElementStore, wallEditElement } from '~/store/edit/editElement'
+import { cargoEditElement, floorEditElement, playerEditElement, targetEditElement, useEditElementStore, wallEditElement } from '~/store/edit/editElement'
 import { useMapEditStore } from '~/store/edit/mapEdit'
 
 const { initMap, updateMapRow, updateMapCol } = useMapEditStore()
@@ -41,6 +41,7 @@ const selectedEditElementName = computed(() => {
       <h4>玩家：</h4>
       <EditElement :edit-element="playerEditElement" />
       <EditElement :edit-element="cargoEditElement" />
+      <EditElement :edit-element="targetEditElement" />
     </div>
     <div m-2 flex space-x-2>
       当前选择：{{ selectedEditElementName }}
