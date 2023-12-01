@@ -18,7 +18,12 @@ export const useEditTargetStore = defineStore('edit-target', () => {
     targets.push(target)
   }
 
+  function removeTarget(target: EditTarget) {
+    targets.splice(targets.findIndex(t => t.id === target.id), 1)
+  }
+
   return {
+    removeTarget,
     addTarget,
     createTarget,
     targets,
